@@ -5,11 +5,14 @@ def sort_array_asc(array)
 end
 
 def sort_array_desc(array)
-  array.reverse.sort
+  array.sort do | left, right|
+    right <=> left
+  end
 end
 
 def sort_array_char_count(array)
-  array.each.string.split.sort 
+  array.sort do |left, right|
+    left.length <=> right.length
   end
 end
 
@@ -45,25 +48,4 @@ def sum_array(array)
     sum+=num
   end
   sum
-
-  # using reduce method
-    # array.reduce(:+)
-
-  # using inject method (short)
-     # array.inject(:+)
-
-  # using inject method (long)
-     # array.inject do |sum,x|
-     #  sum + x
-     # end
-end
-
-def add_s(array)
-  array.collect do |word|
-    if array[1] == word
-      word
-    else
-      word + "s"
-    end
-  end
 end
